@@ -1,0 +1,32 @@
+<div class="col-md-6 mx-auto text-primary" ></div>
+<section class="col-4 mx-auto m1">
+    Customer ID <input type="text" name="txtname" [(ngModel)]="customerId" #accid="ngModel" required class="form-control"/>
+    <div class="alert alert-danger" *ngIf="accid.invalid && accid.touched">Customer ID is Required</div>
+    <h2 class="text-center">
+    <input type="button" class="btn btn-info"  (click)="searchBycustId()" value="search" /></h2>
+</section>
+<section class="alert alert-danger col-4 mx-auto m-1" *ngIf="msg != undefined">
+  
+      {{msg}}
+    
+    </section>
+
+<table class="table shadow text-center table-striped table-hover col-md-8 mx-auto mt-3" >
+  <thead class="thead-dark shadow white-text">
+  <tr>
+    <th>Account Id</th>
+    <th>Account Type</th>
+    <th>Account Balance</th>
+    <th>Account Status</th>
+    <th>Account Created Date</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let acctrans of acc ">
+      <td>{{acctrans.accountId}}</td>
+      <td>{{acctrans. accountName }}</td>
+      <td>{{acctrans.accountBalance| currency: 'INR' }}</td>
+      <td>{{acctrans.accountStatus| titlecase }}</td>
+      <td>{{acctrans. createdDt| date: 'dd-MM-yyyy'}}</td>
+  </tr>
+</table>
+
